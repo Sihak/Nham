@@ -19,6 +19,7 @@ class ListNham extends Component {
             tittle: this.props.navigation.state.params,
             selectedProvinceForShow: '',
             selectedPrvinceName: '',
+            tittlePage: this.props.navigation.state.params.tittle,
         }
     }
 
@@ -37,18 +38,21 @@ class ListNham extends Component {
 
     render() {
         return (
-            <SafeAreaView style={[{ backgroundColor: '#E8F2F6', flex: 1, alignItems: 'center' }]}>
+            <View style = {{flex:1}}>
+            <Image style = {{position:'absolute'}} source = {require('../../asset/img/bg.jpg')} />
+            <SafeAreaView style={[{ flex: 1, alignItems: 'center' }]}>
                 <View style={[styles.header]}>
                     <MainHeader 
+                    color = {'#fff'}
                     back = {true}
-                    tittle = {'Drinks'}
-                    backPressed = {() => this.props.navigation.popToTop()}
+                    tittle = {this.state.tittlePage}
+                    backPressed = {() => this.props.navigation.goBack()}
                      />
                     <SearchInput
                         placeholder={'Where do you want to go?'}
                     />
                     <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('FilterScreen', { returnData: this.returnData.bind(this) })}
+                        onPress={() => this.props.navigation.navigate('Filter', { returnData: this.returnData.bind(this) })}
                         style={[{ marginTop: 10, backgroundColor: '#fff', height: 33, width: 200, justifyContent: 'center', alignItems: 'center', borderRadius: 8, flexDirection: 'row', marginHorizontal: DIMENSION(4), }, APPEARANCES.SHADOW]} >
                         <Ionicons name='md-pin' style={{ fontSize: 16, color: '#32D6FA', marginRight: 5 }} />
                         <Text> {(this.state.selectedProvinceForShow != '' ? this.state.selectedProvinceForShow : 'All').toUpperCase()} </Text>
@@ -70,6 +74,7 @@ class ListNham extends Component {
                     }
                 />
             </SafeAreaView>
+            </View>
         );
     }
 }

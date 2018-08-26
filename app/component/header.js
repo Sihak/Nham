@@ -17,13 +17,13 @@ export default class MainHeader extends Component {
         return (
             <View>
                 <View style={[styles.header]}>
-                    <Text style={styles.headerTittle}>{this.props.tittle}</Text>
+                    <Text style={[styles.headerTittle,{color:this.props.color}]}>{this.props.tittle}</Text>
                     {
                         this.props.search &&
                         <TouchableOpacity
                         onPress = {() => this.props.searchPressed()}
                         >
-                        <MaterialIcons style={styles.notificationIcon} name={'search'} />
+                        <MaterialIcons style={[styles.notificationIcon,{color:this.props.color}]} name={'search'} />
                         </TouchableOpacity>
                     }
                     {
@@ -31,11 +31,11 @@ export default class MainHeader extends Component {
                         <TouchableOpacity
                         onPress = {() => this.props.backPressed()}
                         >
-                        <Ionicons style={styles.notificationIcon} name={'md-close'} />
+                        <Ionicons style={[styles.notificationIcon,{color:this.props.color}]} name={'md-close'} />
                         </TouchableOpacity>
                     }
                 </View>
-                <Text style={styles.headerSubtittle}>{this.props.subTittle}</Text>
+                <Text style={[styles.headerSubtittle,{color:this.props.color}]}>{this.props.subTittle}</Text>
             </View>
         );
     }
@@ -46,7 +46,7 @@ const styles = {
         paddingHorizontal: DIMENSION(5.5),
         fontSize: 16,
         fontWeight: '900',
-        color: 'rgba(0,0,0,0.5)',
+        color: '#fff',
     },
     header: {
         width: DIMENSION(100),
@@ -61,11 +61,11 @@ const styles = {
     headerTittle: {
         fontSize: 28,
         fontWeight: '800',
-        color: COLORS.TEXT_DARK,
+        color: '#fff',
     },
     notificationIcon: {
         fontSize: 42,
         fontWeight: '800',
-        color: COLORS.TEXT_DARK,
+        color: '#fff',
     },
 }

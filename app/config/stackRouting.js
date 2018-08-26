@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation';
 import HomeScreen from '../screen/home';
 import ListNham from '../screen/listNham';
 import SafariView from '../screen/listNham/SafariView';
+import FilterScreen from '../screen/listNham/FilterScreen';
 
 
 const HomeRouting = createStackNavigator({
@@ -16,6 +17,9 @@ const HomeRouting = createStackNavigator({
 
     ViewNham: {
         screen: SafariView,
+    },
+    Filter: {
+        screen: FilterScreen,
     }
 }, {
         headerMode: 'none',

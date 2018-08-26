@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, ScrollView } from 'react-native';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { COLORS, DIMENSION, APPEARANCES } from '../../module';
 import Carousel from '../../component/carousel';
@@ -26,13 +26,15 @@ const testingData = [{
 class HomeScreen extends Component {
 
     render() {
-
         return (
-            <SafeAreaView
+            <View style = {{flex:1}}>
+                <Image style = {{position:'absolute'}} source = {require('../../asset/img/bg.jpg')} />
+                <SafeAreaView
                 style={styles.container}>
-                <View
+                <ScrollView
                     style={styles.container}>
                     <MainHeader
+                        color = {'#fff'}
                         search={true}
                         tittle={'Nham'}
                         subTittle={'Be patient, Scroll, Enjoy !!!'}
@@ -40,22 +42,40 @@ class HomeScreen extends Component {
                     <View style={[styles.gridButton, APPEARANCES.SHADOW]}>
                         <View style={styles.gridRow}>
                             <TouchableOpacity
-                                onPress ={() => this.props.navigation.navigate('ListNham')}
+                                onPress={() => this.props.navigation.navigate('ListNham', {
+                                    listType: 'drinks',
+                                    tittle: 'Drinks'
+                                })}
                                 style={styles.button}>
                                 <Image style={styles.buttonIcon} source={require('../../asset/img/drink.png')} />
                                 <Text style={styles.buttonText}>Drinks</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ListNham', {
+                                    listType: 'foods',
+                                    tittle: 'Foods'    
+                                })}
+                                style={styles.button}>
                                 <Image style={styles.buttonIcon} source={require('../../asset/img/food.png')} />
                                 <Text style={styles.buttonText}>Foods</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.gridRow}>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ListNham', {
+                                    listType: 'shops',
+                                    tittle: 'Shops'
+                                })}
+                                style={styles.button}>
                                 <Image style={styles.buttonIcon} source={require('../../asset/img/shop.png')} />
                                 <Text style={styles.buttonText}>Shops</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.button}>
+                            <TouchableOpacity
+                                onPress={() => this.props.navigation.navigate('ListNham', {
+                                    listType: 'streetFood',
+                                    tittle: 'Street Food'
+                                })}
+                                style={styles.button}>
                                 <Image style={styles.buttonIcon} source={require('../../asset/img/street.png')} />
                                 <Text style={styles.buttonText}>Street Food</Text>
                             </TouchableOpacity>
@@ -65,8 +85,9 @@ class HomeScreen extends Component {
                         <Text style={styles.slideTittle}>Hot Promotion</Text>
                         <Carousel data={testingData} />
                     </View>
-                </View>
+                </ScrollView>
             </SafeAreaView>
+            </View>
         );
     }
 }
@@ -107,15 +128,15 @@ const styles = StyleSheet.create({
 
     slideTittle: {
         paddingHorizontal: DIMENSION(5.5),
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: '900',
-        color: 'rgba(0,0,0,0.5)',
+        color: '#fff',
     },
 
 
     container: {
         flex: 1,
-        backgroundColor: COLORS.BACKGROUND,
+        // backgroundColor: COLORS.BACKGROUND,
     },
 
     body: {

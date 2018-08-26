@@ -3,6 +3,9 @@ import { TabNavigator } from "react-navigation";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import HomeRouting from './stackRouting';
 import HomeScreen from "../screen/home";
+import {COLORS} from '../module';
+import MeRouting from "./meRouting";
+import FavouriteScreen from "../screen/favourite";
 
 const color = "rgba(0,0,0,0.3)";
 const activeColor = '#333';
@@ -34,7 +37,7 @@ const AppRouting = TabNavigator(
     },
    
     Me: {
-      screen: HomeScreen,
+      screen: MeRouting,
       navigationOptions: {
         title: "Me",
         tabBarIcon: ({ focused }) =>
@@ -55,21 +58,21 @@ const AppRouting = TabNavigator(
           )
       }
     },
-    Notification: {
-      screen: HomeScreen,
+    Favourite: {
+      screen: FavouriteScreen,
       navigationOptions: {
-        title: "Notification",
+        title: "Favourite",
         tabBarIcon: ({ focused }) =>
           focused ? (
             <MaterialIcons
-              name="notifications"
+              name="favorite"
               size={iconSize}
               iconStyle={{ paddingBottom: 0, paddingTop: 0 }}
-              color={activeColor}
+              color={COLORS.RED}
             />
           ) : (
             <MaterialIcons
-              name="notifications"
+              name="favorite"
               size={iconSize}
               iconStyle={{ paddingBottom: 0, paddingTop: 0 }}
               color={color}
